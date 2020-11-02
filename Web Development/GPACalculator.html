@@ -1,0 +1,130 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GPA Calculator</title>
+<link rel="icon" href="http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/256/Calculator-icon.png"> <!-- This link displays the icon for the webpage. All rights reserved to Google, and Iconarchive.com -->
+<body style="background-color:#ADD8E6">
+</head>
+<body>
+<div align="center">
+	<p style="font-size:40px;font-family:arial">GPA Calculator</p> <!-- Title on the top of the page -->
+<p style="font-family:arial">Class 1:</p>
+	<input id="c1c" type='text' placeholder='Credits'> <!-- The "1c" part indicates the class credits and the respective class number. -->
+	<input id="c1g" type='text' placeholder='Grade (Decimal Value)'> <!-- The "1g" part indicates the class grade and the respective class number. -->
+	<input readonly id="c1p" type='text' style="background:#00FA9A" placeholder='Class GPA'> <br></br> <!-- The "2p" part indicates the class GPA and the respective class number. -->
+<p style="font-family:arial">Class 2:</p>
+	<input id="c2c" type='text' placeholder='Credits'>
+	<input id="c2g" type='text' placeholder='Grade (Decimal Value)'>
+	<input readonly id="c2p" type='text' style="background:#00FA9A" placeholder='Class GPA'> <br></br>
+<p style="font-family:arial">Class 3:</p>
+	<input id="c3c" type='text' placeholder='Credits'>
+	<input id="c3g" type='text' placeholder='Grade (Decimal Value)'>
+	<input readonly id="c3p" type='text' style="background:#00FA9A" placeholder='Class GPA'> <br></br>
+<p style="font-family:arial">Class 4:</p>
+	<input id="c4c" type='text' placeholder='Credits'>
+	<input id="c4g" type='text' placeholder='Grade (Decimal Value)'>
+	<input readonly id="c4p" type='text' style="background:#00FA9A" placeholder='Class GPA'> <br></br>
+<p style="font-family:arial">Class 5:</p>
+	<input id="c5c" type='text' placeholder='Credits'>
+	<input id="c5g" type='text' placeholder='Grade (Decimal Value)'>
+	<input readonly id="c5p" type='text' style="background:#00FA9A" placeholder='Class GPA'> <br></br>
+<p style="font-family:arial">Class 6:</p>
+	<input id="c6c" type='text' placeholder='Credits'>
+	<input id="c6g" type='text' placeholder='Grade (Decimal Value)'>
+	<input readonly id="c6p" type='text' style="background:#00FA9A" placeholder='Class GPA'> <br></br>
+<p style="font-family:arial">Class 7:</p>
+	<input id="c7c" type='text' placeholder='Credits'>
+	<input id="c7g" type='text' placeholder='Grade (Decimal Value)'>
+	<input readonly id="c7p" type='text' style="background:#00FA9A" placeholder='Class GPA'> <br></br>
+<p style="font-family:arial">Class 8:</p>
+	<input id="c8c" type='text' placeholder='Credits'>
+	<input id="c8g" type='text' placeholder='Grade (Decimal Value)'>
+	<input readonly id="c8p" type='text' style="background:#00FA9A" placeholder='Class GPA'> <br></br>
+</body>
+<textarea readonly style="overflow:auto;resize:none" id="AnswerforGPA">Your Quarterly GPA is:</textarea><br></br>
+<button onclick="CalcGPA()">Calculate GPA</button>
+<div class="GPAscale">
+	<img src="https://gpacalculator.net/wp-content/uploads/New-Picture-7-300x226.png">
+</div>
+<p><b>Use this scale to determine where your GPA holds up.</b></p>
+</div>
+<script>
+function CalcGPA(){
+var c1gpa = ((document.getElementById("c1g").value / 20) - 1) // Each variable save for "quargpa" will calculate the class GPA of each course.
+if (c1gpa < 0){ // These if else statements help in establishing if the class GPA is -1 due to the equation used for class GPA calculation, revert to 0.
+	document.getElementById("c1p").value = "0";
+} else {
+	document.getElementById("c1p").value = c1gpa.toFixed(2); // Sets each value in the format of a two decimal place number.
+}
+var c2gpa = ((document.getElementById("c2g").value / 20) - 1)
+if (c2gpa < 0){
+	document.getElementById("c2p").value = "0";
+} else {
+	document.getElementById("c2p").value = c2gpa.toFixed(2);
+}
+var c3gpa = ((document.getElementById("c3g").value / 20) - 1)
+if (c3gpa < 0){
+	document.getElementById("c3p").value = "0";
+} else {
+	document.getElementById("c3p").value = c3gpa.toFixed(2);
+}
+var c4gpa = ((document.getElementById("c4g").value / 20) - 1)
+if (c4gpa < 0){
+	document.getElementById("c4p").value = "0";
+} else {
+	document.getElementById("c4p").value = c4gpa.toFixed(2);
+}
+var c5gpa = ((document.getElementById("c5g").value / 20) - 1)
+if (c5gpa < 0){
+	document.getElementById("c5p").value = "0";
+} else {
+	document.getElementById("c5p").value = c5gpa.toFixed(2);
+}
+var c6gpa = ((document.getElementById("c6g").value / 20) - 1)
+if (c6gpa < 0){
+	document.getElementById("c6p").value = "0";
+} else {
+	document.getElementById("c6p").value = c6gpa.toFixed(2);
+}
+var c7gpa = ((document.getElementById("c7g").value / 20) - 1)
+if (c7gpa < 0){
+	document.getElementById("c7p").value = "0";
+} else {
+	document.getElementById("c7p").value = c7gpa.toFixed(2);
+}
+var c8gpa = ((document.getElementById("c8g").value / 20) - 1)
+if (c8gpa < 0){
+	document.getElementById("c8p").value = "0";
+} else {
+	document.getElementById("c8p").value = c8gpa.toFixed(2);
+}
+var c1credgpa = (document.getElementById("c1c").value * document.getElementById("c1p").value);
+var c2credgpa = (document.getElementById("c2c").value * document.getElementById("c2p").value);
+var c3credgpa = (document.getElementById("c3c").value * document.getElementById("c3p").value);
+var c4credgpa = (document.getElementById("c4c").value * document.getElementById("c4p").value);
+var c5credgpa = (document.getElementById("c5c").value * document.getElementById("c5p").value);
+var c6credgpa = (document.getElementById("c6c").value * document.getElementById("c6p").value);
+var c7credgpa = (document.getElementById("c7c").value * document.getElementById("c7p").value);
+var c8credgpa = (document.getElementById("c8c").value * document.getElementById("c8p").value);
+var TotalGpa = (c1credgpa + c2credgpa + c3credgpa + c4credgpa + c5credgpa + c6credgpa + c7credgpa + c8credgpa); // Adds all the credit points.
+console.log(TotalGpa)
+var c1cred = document.getElementById("c1c").value;
+var c2cred = document.getElementById("c2c").value;
+var c3cred = document.getElementById("c3c").value;
+var c4cred = document.getElementById("c4c").value;
+var c5cred = document.getElementById("c5c").value;
+var c6cred = document.getElementById("c6c").value;
+var c7cred = document.getElementById("c7c").value;
+var c8cred = document.getElementById("c8c").value;
+var TotalCredits = +c1cred + +c2cred + +c3cred + +c4cred + +c5cred + +c6cred + +c7cred + +c8cred; // Adds all the credits.
+console.log(TotalCredits)
+var quargpa = (TotalGpa / TotalCredits); // This calculates the final GPA.
+var quargpafix = quargpa.toFixed(2); // Sets the GPA to two decimal places.
+if (quargpafix === "NaN"){ // An error message that displays if you enter an non-numerical value on one of the fields or you did not enter anything in any of the spaces.
+	alert("This error implies about two things: Either you typed a letter by accident or you did not put any values in the input fields. Please refresh the page.");
+}
+document.getElementById("AnswerforGPA").value = "Your Quarterly GPA is: " + quargpafix;
+}
+</script>
+</html>
