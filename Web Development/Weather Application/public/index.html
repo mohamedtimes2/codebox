@@ -1,0 +1,217 @@
+<html>
+<head>
+<script>
+function requestWeather() {
+  //cold.gif under 32
+  //cool gif 32 to 50
+  //warm.gif 60 up
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      let json = JSON.parse(xhttp.responseText);
+      let day1temp = json.response[0].periods[0].maxTempF;
+      let day1weat = json.response[0].periods[0].dateTimeISO;
+      let day1 = json.response[0].periods[0].weather;
+      let day2temp = json.response[0].periods[1].maxTempF;
+      let day2weat = json.response[0].periods[1].dateTimeISO;
+      let day2 = json.response[0].periods[1].weather;
+      let day3temp = json.response[0].periods[2].maxTempF;
+      let day3weat = json.response[0].periods[2].dateTimeISO;
+      let day3 = json.response[0].periods[2].weather;
+      let day4temp = json.response[0].periods[3].maxTempF;
+      let day4weat = json.response[0].periods[3].dateTimeISO;
+      let day4 = json.response[0].periods[3].weather;
+      let day5temp = json.response[0].periods[4].maxTempF;
+      let day5weat = json.response[0].periods[4].dateTimeISO;
+      let day5 = json.response[0].periods[4].weather;
+      let day6temp = json.response[0].periods[5].maxTempF;
+      let day6weat = json.response[0].periods[5].dateTimeISO;
+      let day6 = json.response[0].periods[5].weather
+      let day7temp = json.response[0].periods[6].maxTempF;
+      let day7weat = json.response[0].periods[6].dateTimeISO;
+      let day7 = json.response[0].periods[6].weather
+      document.getElementById("day1").innerHTML = day1;
+      document.getElementById("day2").innerHTML = day2;
+      document.getElementById("day3").innerHTML = day3;
+      document.getElementById("day4").innerHTML = day4;
+      document.getElementById("day5").innerHTML = day5;
+      document.getElementById("day6").innerHTML = day6;
+      document.getElementById("day7").innerHTML = day7;
+      document.getElementById("day1weat").innerHTML = day1weat.slice(0,10);
+      document.getElementById("day2weat").innerHTML = day2weat.slice(0,10);
+      document.getElementById("day3weat").innerHTML = day3weat.slice(0,10);
+      document.getElementById("day4weat").innerHTML = day4weat.slice(0,10);
+      document.getElementById("day5weat").innerHTML = day5weat.slice(0,10);
+      document.getElementById("day6weat").innerHTML = day6weat.slice(0,10);
+      document.getElementById("day7weat").innerHTML = day7weat.slice(0,10);
+      document.getElementById("day1temp").innerHTML = day1temp;
+      document.getElementById("day2temp").innerHTML = day2temp;
+      document.getElementById("day3temp").innerHTML = day3temp;
+      document.getElementById("day4temp").innerHTML = day4temp;
+      document.getElementById("day5temp").innerHTML = day5temp;
+      document.getElementById("day6temp").innerHTML = day6temp;
+      document.getElementById("day7temp").innerHTML = day7temp;
+
+      if (Number(document.getElementById("day1temp").innerHTML) < 32) {
+        document.getElementById("day1icon").src = "cold.gif";
+      }
+      else if (Number(document.getElementById("day1temp").innerHTML) >= 32 && Number(document.getElementById("day1temp").innerHTML) <= 50) {
+        document.getElementById("day1icon").src = "cool.gif";
+      }
+      else {
+        document.getElementById("day1icon").src = "warm.gif";
+      }
+
+      if (Number(document.getElementById("day2temp").innerHTML) < 32) {
+        document.getElementById("day2icon").src = "cool.gif";
+      }
+      else if (Number(document.getElementById("day2temp").innerHTML) >= 32 && Number(document.getElementById("day2temp").innerHTML) <= 50) {
+        document.getElementById("day2icon").src = "cool.gif";
+      }
+      else {
+        document.getElementById("day2icon").src = "warm.gif";
+      }
+
+      if (Number(document.getElementById("day3temp").innerHTML) < 32) {
+        document.getElementById("day3icon").src = "cold.gif";
+      }
+      else if (Number(document.getElementById("day3temp").innerHTML) >= 32 && Number(document.getElementById("day3temp").innerHTML) <= 50) {
+        document.getElementById("day3icon").src = "cool.gif";
+      }
+      else {
+        document.getElementById("day3icon").src = "warm.gif";
+      }
+
+      if (Number(document.getElementById("day4temp").innerHTML) < 32) {
+        document.getElementById("day4icon").src = "cold.gif";
+      }
+      else if (Number(document.getElementById("day4temp").innerHTML) >= 32 && Number(document.getElementById("day4temp").innerHTML) <= 50) {
+        document.getElementById("day4icon").src = "cool.gif";
+      }
+      else {
+        document.getElementById("day4icon").src = "warm.gif";
+      }
+
+      if (Number(document.getElementById("day5temp").innerHTML) < 32) {
+        document.getElementById("day5icon").src = "cold.gif";
+      }
+      else if (Number(document.getElementById("day5temp").innerHTML) >= 32 && Number(document.getElementById("day5temp").innerHTML) <= 50) {
+        document.getElementById("day5icon").src = "cool.gif";
+      }
+      else {
+        document.getElementById("day5icon").src = "warm.gif";
+      }
+
+      if (Number(document.getElementById("day6temp").innerHTML) < 32) {
+        document.getElementById("day6icon").src = "cold.gif";
+      }
+      else if (Number(document.getElementById("day6temp").innerHTML) >= 32 && Number(document.getElementById("day6temp").innerHTML) <= 50) {
+        document.getElementById("day6icon").src = "cool.gif";
+      }
+      else {
+        document.getElementById("day6icon").src = "warm.gif";
+      }
+
+      if (Number(document.getElementById("day7temp").innerHTML) < 32) {
+        document.getElementById("day7icon").src = "cold.gif";
+      }
+      else if (Number(document.getElementById("day7temp").innerHTML) >= 32 && Number(document.getElementById("day7temp").innerHTML) <= 50) {
+        document.getElementById("day7icon").src = "cool.gif";
+      }
+      else {
+        document.getElementById("day7icon").src = "warm.gif";
+      }
+    }
+  };
+  let lon = document.getElementById("lon").value;
+  let lat = document.getElementById("lat").value;
+  // let URL = "https://api.aerisapi.com/forecasts/" + lon + "," + lat + "?"";
+  let URL = "/forecasts?lon=" + lon + "&lat=" +lat;
+  xhttp.open("GET", URL, true);
+  xhttp.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+  xhttp.send();
+}
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div id = "container-fluid" style="display:flex; flex-direction:column">
+  <h1>Weather App</h1>
+<section id="weather-input">
+         <div>
+            <label for="lon">Longitude:</label>
+            <input type="text" id="lon">
+         </div>
+         <div>
+            <label for="lat">Latitude:</label>
+            <input type="text" id="lat">
+         </div>
+         <div>
+            <button id="getWea" onclick="requestWeather()">Get Weather</button>
+          </div>
+        </section>
+          <br>
+
+          <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col" id = "day1weat">Day 1</th>
+      <th scope="col" id = "day2weat">Day 2</th>
+      <th scope="col" id="day3weat">Day 3</th>
+      <th scope="col" id="day4weat">Day 4</th>
+      <th scope="col" id="day5weat">Day 5</th>
+      <th scope="col" id="day6weat">Day 6</th>
+      <th scope="col" id="day7weat">Day 7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope ="row">Max Temp (°F):</th>
+      <td id="day1temp"></td>
+      <td id="day2temp"></td>
+      <td id="day3temp"></td>
+      <td id="day4temp"></td>
+      <td id="day5temp"></td>
+      <td id="day6temp"></td>
+      <td id="day7temp"></td>
+    </tr>
+    <tr>
+      <th scope="row">Weather:</th>
+      <td id="day1"></td>
+      <td id="day2"></td>
+      <td id="day3"></td>
+      <td id="day4"></td>
+      <td id="day5"></td>
+      <td id="day6"></td>
+      <td id="day7"></td>
+    </tr>
+    <tr>
+      <th scope="row"> Icon:</th>
+      <td><img id ="day1icon" src="cold.gif"></td>
+      <td><img id ="day2icon" src="cold.gif"></td>
+      <td><img id ="day3icon" src="cold.gif"></td>
+      <td><img id ="day4icon" src="cold.gif"></td>
+      <td><img id ="day5icon" src="cold.gif"></td>
+      <td><img id ="day6icon" src="cold.gif"></td>
+      <td><img id ="day7icon" src="cold.gif"></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="row">
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+</div>
+
+</div>
+</body>
+</html>
