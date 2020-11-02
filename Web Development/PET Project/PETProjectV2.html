@@ -1,0 +1,197 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PET Project: Lab 8</title>
+<p style="font-size:40px;font-family:arial" align="center">PET Project: Presentation</p>
+<style>
+.MyPics {display: block}
+
+.PictFrame { <!--This builds the frame for the pictures.-->
+  max-width: 500px;
+  position: relative;
+  margin: auto;
+  border: 15px black;
+}
+.text { <!--Stylizes the text for the various states-->
+  color: #000000;
+  font-size: 30px;
+  bottom: 0px;
+  width: 50.0%;
+  text-align: center;
+  border: 1px solid blue;
+  background-color: white;
+  font-family: Arial;
+}
+</style>
+</head>
+<body>
+
+<div class="PictFrame" align="center"> <!--The frame that holds the pictures in the slideshow-->
+
+<div class="MyPics"> <!--This class is what aligns the pictures together to make an slideshow-->
+  <img src="CatRelaxedFace.jpg" style="width:50%;height:60%" id="Relaxed" onmouseover="HoverEmotTouch()" onmouseout="HoverEmotLeave()"> <!--This format is used to display the pictures on the "frame"-->
+  <div class="text" id="RelaxedText">Relaxed</div> <!--This displays the text to accompany the picture-->
+</div>
+
+<div class="MyPics">
+  <img src="CatHappyFace.jpg" style="width:50%;height:60%" id="Happy">
+  <div class="text" id="HappyText">Happy</div>
+</div>
+
+<div class="MyPics">
+  <img src="CatAngryFace.jpg" style="width:50%;height:60%" id="Angry">
+  <div class="text" id="AngryText">Angry</div>
+</div>
+
+<div class="MyPics">
+	<img src="CatSadFace.jpg" style="width:50%;height:60%" id="Sad">
+	<div class="text" id="SadText">Sad</div>
+</div>
+
+<div class="MyPics">
+	<img src="CatSleepyFace.jpg" style="width:50%;height:60%" id="Sleepy">
+	<div class="text" id="SleepyText">Sleepy</div>
+</div>
+
+<p></p>
+</div>
+<button align="center" type="button" onclick="Justwaiting()">Info</button> <!-- The layout of the button and the onclick function they start-->
+<button align="center" type="button" onclick="ProgPics(1)">Switch emotions</button>
+<br></br>
+<button align="center" type="button" onclick="BeingFed()">Being Fed</button>
+<button align="center" type="button" onclick="PettingPet()">Petting Pet</button>
+<button align="center" type="button" onclick="TakingBath()">Taking a Bath</button>
+<button align="center" type="button" onclick="PlaySmash()">Playing Smash Ultimate</button>
+<br></br>
+<textarea readonly style="overflow:auto;resize:none" id="Indicator">Initial state.</textarea>
+</body>
+<script>
+var PicIndex = 1;
+DisplayPics(PicIndex);
+
+function DisplayPics(n) { // The main function that indicates the level of sildes and what order they precede each other.
+  var i;
+  var pics = document.getElementsByClassName("MyPics");
+  if (n > pics.length) {PicIndex = 1}
+  if (n < 1) {PicIndex = pics.length}
+  for (i = 0; i < pics.length; i++) {
+      pics[i].style.display = "none";
+  }
+  pics[PicIndex-1].style.display = "block";
+}
+
+function ProgPics(n) { //The main function that changes the order of the slides.
+  DisplayPics(PicIndex += n);
+  clearTimeout('TimeToEmot()');
+}
+function Justwaiting(){ //This is used for the info button to show how people can get started.
+	alert("Yes, the PET is a cat. I know, pretty generic, but just give it a try. Use the 'Change emotions' button to analyze the PET's behavioral structures and other buttons to branch off of that.")
+	clearTimeout('TimeToEmotEX()');
+	clearTimeout('TimeToEmotMess()');
+}
+function HoverEmotTouchEX() { //The root of when a user touches the screen of the picture, a new emotion would show.
+	document.getElementById("Relaxed").src = "CatHappyFace.jpg";
+	document.getElementById("RelaxedText").innerHTML = "Happy";
+}
+function HoverEmotTouch(){ //An extension of the rooted function.
+	setTimeout('HoverEmotTouchEX()', 2000)
+	clearTimeout('TimeToEmotEX()');
+	clearTimeout('TimeToEmotMess()');
+}
+function HoverEmotLeaveEX() { //The root of when a user touches the screen of the picture, a new emotion would show.
+	document.getElementById("Relaxed").src = "CatRelaxedFace.jpg";
+	document.getElementById("RelaxedText").innerHTML = "Relaxed";
+}
+
+function HoverEmotLeave(){ //The extension of the rooted function.
+	setTimeout('HoverEmotLeaveEX()', 4000);
+	clearTimeout('TimeToEmotEX()');
+	clearTimeout('TimeToEmotMess()');
+}
+function TimeToEmotEX(){ //The function that will start if idle over 15 seconds, changing the state of the PET.
+	document.getElementById("Relaxed").src = "CatSadFace.jpg";
+	document.getElementById("RelaxedText").innerHTML = "Sad";
+}
+function TimeToEmotMess(){ //The message that accompanies the function that work over the auto change of emotions.
+	alert("Hey. Hey, you. You're forgetting your PET again. Press a button or hover over the picture to change its emotion.");
+	clearTimeout('TimeToEmotEX()');
+	clearTimeout('TimeToEmotMess()');
+}
+function TimetoEmot(){ //This starts the function that both messages and changes the PET's emotion.
+	setTimeout('TimeToEmotEX()', 15000);
+	setTimeout('TimeToEmotMess()', 15050);
+}
+TimetoEmot(); //This function is being called.
+var ImageRanFed = ["CatAngryFace.jpg", "CatHappyFace.jpg", "CatSleepyFace.jpg"]
+function BeingFed(){ //The function and the others succeeding it change the state of the PET depending on its initial state when selected on the webpage.
+	var numFed =  Math.floor(Math.random() * 3);
+	document.getElementById("Angry").src = "CatHappyFace.jpg";
+	document.getElementById("AngryText").innerHTML = "Happy";
+	document.getElementById("Sad").src = "CatAngryFace.jpg";
+	document.getElementById("SadText").innerHTML = "Angry";
+	document.getElementById("Happy").src = "CatSleepyFace.jpg";
+	document.getElementById("HappyText").innerHTML = "Sleepy";
+	document.getElementById("Relaxed").src = "CatAngryFace.jpg";
+	document.getElementById("RelaxedText").innerHTML = "Angry";
+	document.getElementById("Sleepy").src = ImageRanFed[numFed];
+	document.getElementById("SleepyText").innerHTML = "Randomized!";
+	document.getElementById("Indicator").value = "Changed states."; //Indicates to the user if a state has changed.
+	setTimeout(window.location.reload.bind(window.location), 10000);
+	clearTimeout('TimeToEmotEX()');
+	clearTimeout('TimeToEmotMess()');
+}
+
+var ImageRanPetting = ["CatAngryFace.jpg", "CatRelaxedFace.jpg", "CatSleepyFace.jpg"] //This array determines what states can be randomly selected for the PettingPet function.
+function PettingPet(){
+	var numPetting = Math.floor(Math.random() * 3);
+	document.getElementById("Relaxed").src = "CatHappyFace.jpg";
+	document.getElementById("RelaxedText").innerHTML = "Happy";
+	document.getElementById("Happy").src = "CatRelaxedFace.jpg";
+	document.getElementById("HappyText").innerHTML = "Relaxed";
+	document.getElementById("Angry").src = "CatRelaxedFace.jpg";
+	document.getElementById("AngryText").innerHTML = "Relaxed";
+	document.getElementById("Sad").src = "CatHappyFace.jpg";
+	document.getElementById("SadText").innerHTML = "Happy";
+	document.getElementById("Sleepy").src = ImageRanPetting[numPetting];
+	document.getElementById("SleepyText").innerHTML = "Randomized!";
+	document.getElementById("Indicator").value = "Changed states.";
+	setTimeout(window.location.reload.bind(window.location), 10000);
+	clearTimeout('TimeToEmotEX()');
+	clearTimeout('TimeToEmotMess()');
+}
+var ImageRanBath = ["CatAngryFace.jpg", "CatHappyFace.jpg", "CatSadFace.jpg"]
+function TakingBath(){
+	var numBath = Math.floor(Math.random() * 3);
+	document.getElementById("Relaxed").src = "CatAngryFace.jpg";
+	document.getElementById("RelaxedText").innerHTML = "Angry";
+	document.getElementById("Happy").src = ImageRanBath[numBath];
+	document.getElementById("HappyText").innerHTML = "Randomized!";
+	document.getElementById("Angry").innerHTML = "CatAngryFace.jpg";
+	document.getElementById("AngryText").innerHTML = "Angry";
+	document.getElementById("Sad").src = "CatSadFace.jpg";
+	document.getElementById("SadText").innerHTML = "Sad";
+	document.getElementById("Sleepy").src = "CatAngryFace.jpg";
+	document.getElementById("SleepyText").innerHTML = "Angry";
+	document.getElementById("Indicator").value = "Changed states.";
+	setTimeout(window.location.reload.bind(window.location), 10000);
+	clearTimeout('TimeToEmotEX()');
+	clearTimeout('TimeToEmotMess()');
+}
+function PlaySmash(){ //I honestly added this one as a joke.
+	document.getElementById("Relaxed").src = "CatHappyFace.jpg";
+	document.getElementById("RelaxedText").innerHTML = "Happy";
+	document.getElementById("Happy").src = "CatHappyFace.jpg";
+	document.getElementById("HappyText").innerHTML = "Happy";
+	document.getElementById("Angry").src = "CatHappyFace.jpg";
+	document.getElementById("AngryText").innerHTML = "Happy";
+	document.getElementById("Sad").src = "CatHappyFace.jpg";
+	document.getElementById("SadText").innerHTML = "Happy";
+	document.getElementById("Sleepy").src = "CatHappyFace.jpg";
+	document.getElementById("SleepyText").innerHTML = "Happy";
+	document.getElementById("Indicator").value = "Changed states.";
+	setTimeout(window.location.reload.bind(window.location), 10000);
+	clearTimeout('TimeToEmotEX()');
+	clearTimeout('TimeToEmotMess()');
+}
+</script>
+</html>
