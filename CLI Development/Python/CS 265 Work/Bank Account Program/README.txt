@@ -1,0 +1,1 @@
+To run the program just input the command: "python accountmenu.py"
