@@ -1,0 +1,107 @@
+<html>
+<head>
+  <title>Fantasmix | Generate</title>
+  <link rel="icon" href="CaptureX.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="musicgeneratestyle.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+</head>
+<body>
+  <ul>
+    <li><img src = "CaptureX.png" class = "logo"></li>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#About">About Project</a></li>
+    <li><a href="#Generate">Generate Music</a></li>
+    <li><a href="#Login">Login</a></li>
+  </ul>
+<br>
+<div class = "container-fluid">
+    <h1 class="animated fadeInUp">Generate Music</h1>
+    <hr>
+<div class = "container">
+  <div class="col-lg-6">
+    <h2 class="animated fadeInUp">Length <i class="material-icons" style ="font-size: 30px;" href="#" data-toggle="popover" title="What is length?" data-content="Length in this context refers to how long you would like the song you produce to be. Click the respective radio button below to your preferred length!">help</i></h2>
+      <label class="selector" style = "font-weight: normal;">Short
+  <input type="radio" checked="checked" name="radio">
+  <span class="checkmark"></span>
+  </label>
+  <label class="selector" style = "font-weight: normal;">Mid
+  <input type="radio" name="radio">
+  <span class="checkmark"></span>
+  </label>
+  <label class="selector" style = "font-weight: normal;">Long
+  <input type="radio" name="radio">
+  <span class="checkmark"></span>
+  </label>
+  </div>
+
+  <div class="col-lg-6">
+    <h2 class="animated fadeInUp">Tempo <i class="material-icons" style ="font-size: 30px;"  href="#" data-toggle="popover" title="What is tempo?" data-content="Tempo is the speed at which your music will be played. Click the respective radio button to your preferred tempo!">help</i></h2>
+    <label class="selector" style = "font-weight: normal;">Slow
+<input type="radio" checked="checked" name="radio-alt">
+<span class="checkmark"></span>
+</label>
+<label class="selector" style = "font-weight: normal;">Mid
+<input type="radio" name="radio-alt">
+<span class="checkmark"></span>
+</label>
+<label class="selector" style = "font-weight: normal;">Fast
+<input type="radio" name="radio-alt">
+<span class="checkmark"></span>
+</label>
+<label class="selector" style = "font-weight: normal;">Faster
+<input type="radio" name="radio-alt">
+<span class="checkmark"></span>
+</label>
+  </div>
+</div>
+
+<div class = "container">
+    <div class="col-lg-6">
+      <h2 class="animated fadeInUp">Instruments <i class="material-icons" style ="font-size: 30px;"  href="#" data-toggle="popover" title="How does choosing an instrument work?" data-content="Instruments will define what kind of music you are hearing. The main melody will be played by the primary instrument selected below. The secondary instrument will supply supporting sounds. Below you can select a primary and secondary instrument using the dropdown menus.">help</i></h2>
+          <label for="primaryInstrument" style = "font-weight: normal;">Primary Instrument:</label>
+          <select class="form-control" id="primaryInstrument">
+              <option value="empty">Pick an instrument</option>
+              <option value="piano">Piano</option>
+              <option value="guitar">Guitar</option>
+              <option value="synth">Synth</option>
+              <option value="violin">Violin</option>
+              <option value="banjo">Banjo</option>
+          </select>
+          <br>
+          <label for="secondaryInstrument" style = "font-weight: normal;">Secondary Instrument:</label>
+          <select class="form-control"id="secondaryInstrument">
+              <option value="empty">Pick an instrument</option>
+              <option value="none">None</option>
+              <option value="piano">Piano</option>
+              <option value="guitar">Guitar</option>
+              <option value="synth">Synth</option>
+              <option value="violin">Violin</option>
+              <option value="banjo">Banjo</option>
+          </select>
+    </div>
+
+    <div class="col-lg-6">
+      <h2 class="animated fadeInUp">Scale <i class="material-icons" style ="font-size: 30px;" href="#" data-toggle="popover" title="What is scale?" data-content="Music scale is an organized sequence of notes. Depending what scale you choose, the pitch of your music will change!">help</i></h2>
+      <label for="scalechoice" style = "font-weight: normal;">Scale:</label>
+      <select class="form-control"id="scalechoice">
+          <option value="empty">Pick an scale</option>
+          <option value="major">Major</option>
+          <option value="minor">Minor</option>
+      </select>
+    </div>
+  </div>
+<button class="btn btn-outline-success btn-block" id ="generbutt">Generate!</button>
+</div>
+</body>
+<script>
+$(document).ready(function(){
+  $('[data-toggle="popover"]').popover();
+});
+</script>
+</html>
